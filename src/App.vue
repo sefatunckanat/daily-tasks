@@ -11,8 +11,8 @@
   	</transition>
 		<header>
 			<router-link to="/">Anasayfa</router-link>
-			<router-link to="/profile" v-if="userInfo.loggedin">Profil</router-link>
-			<router-link to="/login" v-if="!userInfo.loggedin">Login</router-link>
+			<router-link to="/profile" v-if="userInfo.answer == 'yes'">Profil</router-link>
+			<router-link to="/login" v-if="userInfo.answer == 'no'">Login</router-link>
 		</header>
     <router-view :userInfo="this.userInfo">
     </router-view>
@@ -68,9 +68,10 @@ header {
 		margin: 5px;
 		transition: 0.2s;
 		padding: 20px;
+		border: 1px solid #666;
+		border-radius: 2px;
 		&:hover{
 			background: #eee;
-			border-radius: 2px;
 		}
 	}
 }
