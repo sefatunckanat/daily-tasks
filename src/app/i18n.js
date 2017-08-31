@@ -1,3 +1,4 @@
+const langList = ['tr']
 const messages = {
     en: {
 	  	message: {
@@ -11,7 +12,9 @@ const messages = {
     }
 }
 
+const locale = langList.indexOf(navigator.language) != -1 ? navigator.language : 'en';
+
 export default{
-	locale: 'tr',
+	locale: locale,
 	messages
 }
