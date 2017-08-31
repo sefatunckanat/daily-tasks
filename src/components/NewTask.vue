@@ -3,8 +3,8 @@
 		<h1>New Task</h1>
 		<TimeRange/>
 		<div class="clearfix"></div>
-	</div>
-</template>
+	</div></template>
+
 
 <script>
 import TimeRange from "./TimeRange.vue"

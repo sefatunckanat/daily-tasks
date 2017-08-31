@@ -1,20 +1,31 @@
 <template>
 	<div id="timeRange">
-		<div class="arrow past" v-bind:class="getArrowClass('past')" v-bind:style="getArrowStyle('past')">
+		<div 
+			class="arrow past" 
+			v-bind:class="getArrowClass('past')" 
+			v-bind:style="getArrowStyle('past')">
 			<div class="triangle"></div>
 			<div class="triangle2"></div>
 			<div class="tooltip">Past</div>
 		</div>
-		<div class="arrow future" v-bind:class="getArrowClass('future')" v-bind:style="getArrowStyle('future')">
+		<div 
+			class="arrow future" 
+			v-bind:class="getArrowClass('future')" 
+			v-bind:style="getArrowStyle('future')">
 			<div class="triangle"></div>
 			<div class="triangle2"></div>
 			<div class="tooltip">Future</div>
 		</div>
 		<div class="rangeMain">
-			<span v-on:click="setTime(time)"  v-for="time in timeTexts" v-bind:style="getTimeStyle(time)" v-bind:class="getTimeClass(time)">
+			<span 
+				v-on:click="setTime(time)"  
+				v-for="time in timeTexts" 
+				v-bind:style="getTimeStyle(time)" 
+				v-bind:class="getTimeClass(time)">
 				{{ time }}
 			</span>
 		</div>
+		<button v-on:click="allDay">Select All Day</button>
 		<p>Selected times : {{timeTexts[past]}} - {{timeTexts[future]}}</p>
 	</div>
 </template>
@@ -30,22 +41,11 @@ export default{
 			clickIndex:0
 		}
 	},
-	created(){
-		var t = "[";
-		for (var i = 0; i < 24; i++) {
-			t+="'";
-			if(i<10)
-				t+="0"+i
-			else
-				t+=i
-
-
-			t+=":00',";
-		}
-		t+="]";
-		console.log(t);
-	},
 	methods:{
+		allDay:function(){
+			this.past = 0;
+			this.future = this.timeTexts.length-1;
+		},
 		setTime:function(str){
 			if(this.clickIndex%2){
 				var backup = this.past;
@@ -115,7 +115,7 @@ $rangeHeight: 20px
 		overflow: hidden
 		span
 			position: absolute
-			font-size: 14px
+			font-size: 12px
 			line-height: $rangeHeight
 			color: #fff
 			height: 100%

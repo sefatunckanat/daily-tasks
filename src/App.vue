@@ -9,13 +9,14 @@
 		 	 	</svg>
 	  	</div>
   	</transition>
-		<header>
-			<router-link to="/">Anasayfa</router-link>
-			<router-link to="/profile" v-if="userInfo.answer == 'yes'">Profil</router-link>
-			<router-link to="/login" v-if="userInfo.answer == 'no'">Login</router-link>
-		</header>
+	<header>
+		<router-link to="/">Anasayfa</router-link>
+		<router-link to="/profile" v-if="userInfo.answer == 'yes'">Profil</router-link>
+		<router-link to="/login" v-if="userInfo.answer == 'no'">Login</router-link>
+	</header>
     <router-view :userInfo="this.userInfo">
     </router-view>
+    <p>{{ $t("message.hello") }}</p>
   </div>
 </template>
 
